@@ -1,0 +1,14 @@
+(library
+    (name Tests)
+    (public_name functorized-test-demo.test)
+    (flags -linkall -g)
+    (libraries rely.lib)
+    (modules (:standard \ RunTests))
+)
+(executable
+   (name RunTests)
+   (public_name RunTests.exe)
+   (libraries  functorized-test-demo.test )
+   (modules RunTests)
+)
+(include_subdirs unqualified)
