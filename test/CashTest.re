@@ -1,5 +1,5 @@
 include PaymentMethodTest.Make({
-  include Cash;
+  module PaymentMethod = Cash;
   let name = "Cash";
   let initializeWithFunds = x => x;
 });
