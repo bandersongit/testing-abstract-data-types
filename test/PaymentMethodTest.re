@@ -1,7 +1,7 @@
 module type PaymentMethodTestConfig = {
   include Types.PaymentMethod;
   let name: string;
-  let initialize: float => t;
+  let initializeWithFunds: float => t;
 };
 
 module Make = (PaymentMethod: PaymentMethodTestConfig) => {
@@ -11,14 +11,14 @@ module Make = (PaymentMethod: PaymentMethodTestConfig) => {
     PaymentMethod.name,
     ({test}) => {
       test("Initializing with 10 should leave 10 in available funds", ({expect}) => {
-        let paymentMethod = PaymentMethod.initialize(10.);
+        let paymentMethod = PaymentMethod.initializeWithFunds(10.);
 
         let availableFunds = PaymentMethod.getAvailableFunds(paymentMethod);
 
         expect.float(availableFunds).toBeCloseTo(10.);
       });
       test("Spending the initialized balance should leave 0 funds available", ({expect}) => {
-        let paymentMethod = PaymentMethod.initialize(10.);
+        let paymentMethod = PaymentMethod.initializeWithFunds(10.);
 
         let transactionResult = PaymentMethod.charge(10., paymentMethod);
 
@@ -35,7 +35,7 @@ module Make = (PaymentMethod: PaymentMethodTestConfig) => {
         expect.float(availableFunds).toBeCloseTo(0.);
       });
       test("Spending more than the available balance should return Error", ({expect}) => {
-        let paymentMethod = PaymentMethod.initialize(10.);
+        let paymentMethod = PaymentMethod.initializeWithFunds(10.);
 
         let transactionResult = PaymentMethod.charge(42., paymentMethod);
 
