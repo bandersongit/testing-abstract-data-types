@@ -1,5 +1,5 @@
 {
-  "checksum": "da308c91f441e9fed92e7ef71193fae9",
+  "checksum": "186344a4555a922c7591ccaff6013caf",
   "root": "functorized-test-demo@link-dev:./package.json",
   "node": {
     "refmterr@3.1.10@d41d8cd9": {
@@ -63,18 +63,20 @@
         "@esy-ocaml/reason@3.4.0@d41d8cd9"
       ],
       "devDependencies": [
-        "@reason-native/rely@2.1.0@d41d8cd9",
+        "@reason-native/rely@github:facebookexperimental/reason-native:rely.json#0539aed5084391308642f4528f6c3d88035b0b3f@d41d8cd9",
         "@esy-ocaml/merlin@3.0.5005@d41d8cd9"
       ]
     },
-    "@reason-native/rely@2.1.0@d41d8cd9": {
-      "id": "@reason-native/rely@2.1.0@d41d8cd9",
+    "@reason-native/rely@github:facebookexperimental/reason-native:rely.json#0539aed5084391308642f4528f6c3d88035b0b3f@d41d8cd9": {
+      "id":
+        "@reason-native/rely@github:facebookexperimental/reason-native:rely.json#0539aed5084391308642f4528f6c3d88035b0b3f@d41d8cd9",
       "name": "@reason-native/rely",
-      "version": "2.1.0",
+      "version":
+        "github:facebookexperimental/reason-native:rely.json#0539aed5084391308642f4528f6c3d88035b0b3f",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://registry.npmjs.org/@reason-native/rely/-/rely-2.1.0.tgz#sha1:f562a8dc2ad51d1d4930ac6278d98e6547bb8c33"
+          "github:facebookexperimental/reason-native:rely.json#0539aed5084391308642f4528f6c3d88035b0b3f"
         ]
       },
       "overrides": [],

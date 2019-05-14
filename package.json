@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "My Project",
   "esy": {
-    "build": "refmterr dune build"
+    "build": "refmterr dune build --profile=release"
   },
   "scripts": {
     "test": "esy x RunTests.exe"
@@ -18,5 +18,8 @@
   "devDependencies": {
     "@esy-ocaml/merlin": "*",
     "@reason-native/rely": "*"
+  },
+  "resolutions": {
+    "@reason-native/rely": "facebookexperimental/reason-native:rely.json#0539aed5084391308642f4528f6c3d88035b0b3f"
   }
 }
