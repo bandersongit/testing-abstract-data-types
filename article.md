@@ -26,13 +26,17 @@ module type Stack = {
 - The last thing pushed onto a stack should be the first thing returned by Stack.pop
 - Popping from an empty stack is invalid
 
+We could also express this ADT using a record type, or with an interface in an object oriented language. These approaches are also valid and can make sense depending on your use case. For the purposes of this article we will be using module types.
+
 ### How is this relevant to the applications/libraries that I am creating?
 
-While data structures are certainly the most obvious examples of ADT's, they are in fact quite common in many applications. We will walk through an example that can hopefully be applied more generally. We will be using [Rely](https://reason-native.com/docs/rely/) as our testing framework.
+While data structures are certainly the most obvious examples of ADT's, they are in fact quite common in many applications. We will walk through an example that can hopefully be applied more generally. We will be using [Rely](https://reason-native.com/docs/rely/) to write our tests.
 
-### Identifying our ADT
+### Explicitly Identifying our ADT
 
-We define our ADT using the following module type (note that this could certainly be expressed as a record type as well)
+When going through this exercise. It is helpful to first explicitly identify both the type of the ADT (which hopefully already exists in some form in your application) as well as the explicit set of rules that we expect to be true of any instance of the ADT. This set of rules will be the basis for our tests cases.
+
+For this example, we define our ADT using the following module type (note that this could certainly be expressed as a record type as well)
 
 ```reason
 module type PaymentMethod = {
@@ -46,14 +50,12 @@ module type PaymentMethod = {
 
 Based on this type and our intuitive understanding of what a payment method is, we can develop some plain English rules to describe what we expect to be true of _any_ payment method.
 
-- If there are $N in available funds and $M is spent, there should be \$(N-M) remaining
+- If there are $N in available funds and $M is spent, there should be $(N-M) remaining
 - Spending more than is available should return an Error
-
-When doing this exercise, the rules that we identify as part of our ADT are exactly the things that we wish to test.
 
 ### Translating to test cases
 
-Now we can begin to translate the rules into actual code. In reason, a natural way to build these tests independent of implementation is by using a functor (module function). Again note that if we defined our ADT using a module type we could use ordinary functions here instead.
+Now we can begin to translate the rules into actual code. In Reason, a natural way to build these tests independent of implementation is by using a functor (module function). Again note that if we defined our ADT using a record type we could use ordinary functions here instead.
 
 ### PaymentMethodTest.re
 
@@ -167,10 +169,10 @@ include PaymentMethodTest.Make({
 });
 ```
 
-For the full code example see [this repo](todo)
+For the full code example see [the accompanying github repository](https://github.com/bandersongit/testing-abstract-data-types)
 
 I hope that this concept is useful. Please let me know if there are any other testing topics you would like to see my cover by reaching out on twitter(@the_banderson) or the [reason discord](https://discordapp.com/invite/reasonml)
 
 
 I first learned about testing ADT's (and much more) from Zoran Horvat's excellent puralsight course on [Writing Highly Maintainable Unit Tests](https://www.pluralsight.com/courses/writing-highly-maintainable-unit-tests
-) (not an affiliate link)
+) (not an affiliate link), which presents similar material from an object oriented perspective using C#.
